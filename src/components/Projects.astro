@@ -1,0 +1,107 @@
+---
+const { title, description, tecno = [], github } = Astro.props;
+---
+
+<section id="projects">
+  <section id="project">
+    <div id="info-project">
+      <h2>{title}</h2>
+      <h3>{description}</h3>
+      <div id="tecnologia">
+        {tecno.map((t: unknown) => <h3>{t}</h3>)}
+      </div>
+      <div id="iconos">
+        <a class="fa-brands fa-github" href={github} target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="currentColor"
+            class="bi bi-github"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+            ></path>
+          </svg></a
+        >
+        <a href="https://clikkofficial.netlify.app/" target="_blank"
+          ><img
+            width="50"
+            height="50"
+            src="/public/captive_portal_40dp_FFFFFF_FILL0_wght400_GRAD0_opsz40.svg"
+            alt="internet--v1"
+          /></a
+        >
+      </div>
+    </div>
+    <div id="img-project">
+      <img src="../../public/Diseño sin título.png" alt="" />
+    </div>
+  </section>
+</section>
+
+<style>
+  #projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #project {
+    margin-top: 60px;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  #info-project {
+    flex: 0 700px;
+    max-width: 550px;
+    overflow-wrap: break-word;
+  }
+  #info-project h2 {
+    font-size: 2.6rem;
+  }
+  #info-project h3 {
+    background-color: #604a84;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.4);
+  }
+  #img-project{
+    width: 750px;
+    flex: 1;
+  }
+  #img-project img {
+    max-width: 100%; /* la imagen no puede ser más ancha que el contenedor */
+    height: auto; /* mantiene la proporción */
+    display: block; /* elimina espacio extra debajo */
+    object-fit: contain; /* opcional: encaja sin recortarse */
+    
+  }
+  #tecnologia,
+  #iconos {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+
+  }
+  #tecnologia h3 {
+    background-color: #6b7280;
+    padding: 6px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  a {
+    color: white;
+  }
+</style>

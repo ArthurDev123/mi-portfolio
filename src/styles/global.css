@@ -1,0 +1,31 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color-scheme: light dark;
+  color: aliceblue;
+  height: auto; /* no los fuerces a 100vh */
+  min-height: 100vh; /* solo altura mínima */
+   overflow-y: scroll;
+   overflow-x: hidden;
+}
+span {
+  font-weight: bold;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+    color: #eee;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fff;
+    color: #111;
+  }
+}
