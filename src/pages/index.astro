@@ -8,13 +8,14 @@ import SectionButtonsFirst from "../components/SectionButtonsFirst.astro";
 import About from "../components/About.astro";
 import Projects from "../components/Projects.astro";
 import ProjectsInverse from "../components/Projects_Inverse.astro";
+import '../styles/global.css'
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <title>Mi Portfolio</title>
-    <link rel="stylesheet" href="/src/styles/global.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
@@ -40,7 +41,7 @@ import ProjectsInverse from "../components/Projects_Inverse.astro";
 
       <Projects
         title="Clikk - una aplicación para gestionar grupos de amigos "
-        img="/public/Diseño sin título.png"
+        img="/images/Diseño sin título.png"
         description={`Clikk es una aplicación social para conocer personas y crear grupos de amigos con intereses en común. Incluye chat en tiempo real mediante WebSockets, notificaciones por correo electrónico y un sistema de suscripción premium.`}
         tecno={["HTML", "CSS", "JavaScript", "Nodejs", "Express", "MongoDB"]}
         github="https://github.com/ArthurDev123/Clikk-frontend"
@@ -50,7 +51,7 @@ import ProjectsInverse from "../components/Projects_Inverse.astro";
       <ProjectsInverse />
       <Projects
         title="Mi Portfolio "
-        img="/public/miportfolio.png"
+        img="/images/miportfolio.png"
         description={`Portfolio personal desarrollado con Astro para lograr un sitio rápido y optimizado.
 Incluye una landing page responsive, navegación sencilla y componentes reutilizables.
 El diseño está hecho con HTML, CSS y Flexbox, acompañado de efectos visuales como gradientes animados y un fondo dinámico de estrellas.
