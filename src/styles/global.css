@@ -10,8 +10,10 @@ body {
   color: aliceblue;
   height: auto; /* no los fuerces a 100vh */
   min-height: 100vh; /* solo altura mínima */
-   overflow-y: scroll;
-   overflow-x: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%; /* importante */
+  max-width: 100vw;
 }
 span {
   font-weight: bold;
