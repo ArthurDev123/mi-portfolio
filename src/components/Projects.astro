@@ -1,5 +1,5 @@
 ---
-const { title, description, tecno = [], github } = Astro.props;
+const { title,img, description, tecno = [], github } = Astro.props;
 ---
 
 <section id="projects">
@@ -36,7 +36,7 @@ const { title, description, tecno = [], github } = Astro.props;
       </div>
     </div>
     <div id="img-project">
-      <img src="../../public/Diseño sin título.png" alt="" />
+      <img src={img} alt="" />
     </div>
   </section>
 </section>
