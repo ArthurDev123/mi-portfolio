@@ -68,14 +68,8 @@
     justify-content: center;
     gap: 20px;
   }
-  @media (max-width: 768px) {
-    #project {
-      flex-direction: column; /* columnas en móviles */
-      padding: 10px;
-    }
-  }
+
   #info-project {
-    flex: 0 700px;
     max-width: 550px;
   }
   #info-project h2 {
@@ -121,5 +115,59 @@
   }
   a {
     color: white;
+  }
+  @media (max-width: 768px) {
+
+    #project {
+      flex-direction: column-reverse; /* columnas en móviles */
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+    }
+    #info-project h2 {
+      font-size: 1.4rem;
+    }
+    #info-project h3 {
+      font-size: 0.8rem;
+    }
+    #info-project {
+      height: 350px;
+      max-width: 350px;
+      overflow-wrap: break-word;
+    }
+    #tecnologia,
+    #iconos {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      align-items: center;
+    }
+    #tecnologia h3 {
+      background-color: #6b7280;
+      padding: 4.5px;
+      font-size: 0.8rem;
+      border-radius: 5px;
+    }
+    svg {
+      height: 30px;
+      width: 30px;
+    }
+    img {
+      height: 35px;
+      width: 35px;
+    }
+    #img-project {
+      width: 750px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #img-project img {
+      margin: 0;
+      width: 45%; /* la imagen no puede ser más ancha que el contenedor */
+      display: block; /* elimina espacio extra debajo */
+      object-fit: contain; /* opcional: encaja sin recortarse */
+    }
   }
 </style>

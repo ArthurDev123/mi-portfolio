@@ -60,9 +60,23 @@
     background-color: #f4f4f4;
     margin-left: 13.5px;
   }
-  #icons a:hover{
+  #icons a:hover {
     color: #604a84;
     transform: scale(1.25);
   }
-  
+  @media (max-width: 768px) {
+   #icons{
+    margin-right: 1rem;
+    gap: 1px;
+   }
+   svg{
+    width:15px;
+    height:15px;
+   }
+   .linea-vertical{
+    width: 3px;
+    height: 30px;
+    margin-left: 6px;
+   }
+  }
 </style>

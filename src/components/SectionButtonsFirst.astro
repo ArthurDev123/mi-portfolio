@@ -13,7 +13,9 @@
       ></path>
     </svg> Contactame</button
   >
-  <a href="/images/Copia de Black And White Minimalist Professional Resume A4.pdf" download
+  <a
+    href="/images/Copia de Black And White Minimalist Professional Resume A4.pdf"
+    download
     ><button
       ><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,5 +52,25 @@
   }
   button:hover {
     transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    #buttons{
+      margin-top: 10px;
+    }
+    button {
+    padding: 10px;
+    margin: 3px;
+    background-color: #604a84;
+    border-style: none;
+    border-radius: 2%;
+    font-weight: bold;
+    font-size: 10px;
+    cursor: pointer;
+  }
+  svg{
+    width: 10px;
+    height: 10px;
+  }
   }
 </style>
