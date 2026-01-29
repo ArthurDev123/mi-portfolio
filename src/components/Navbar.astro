@@ -1,6 +1,6 @@
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dark_mode"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dark_mode,light_mode"
 />
 
 <nav id="navbar">
@@ -9,14 +9,36 @@
     <li><a href="#aboutme">Sobre mí</a></li>
     <li><a href="#projects">Proyectos</a></li>
     <li><a href="#contact">Contactame</a></li>
-    <li><span class="material-symbols-outlined">dark_mode</span></li>
+    <li><span class="material-symbols-outlined" id="themeToggle" role="button" tabindex="0">dark_mode</span></li>
   </ul>
 </nav>
 
 <script>
   let lastScrollTop = 0;
   const navbar = document.getElementById('navbar');
+  const themeToggle = document.getElementById('themeToggle');
 
+  // Tema mode toggle
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light-mode');
+    
+    if (document.documentElement.classList.contains('light-mode')) {
+      themeToggle.textContent = 'light_mode';
+      localStorage.setItem('theme', 'light');
+    } else {
+      themeToggle.textContent = 'dark_mode';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  // Cargar tema guardado
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  if (savedTheme === 'light') {
+    document.documentElement.classList.add('light-mode');
+    themeToggle.textContent = 'light_mode';
+  }
+
+  // Navbar scroll hide
   window.addEventListener('scroll', function() {
     let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
     
@@ -81,18 +103,27 @@
   }
 
   a {
-    color: white;
+    color: var(--text-primary);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
   }
 
   a:hover {
-    color: #604a84;
+    color: var(--accent);
   }
 
   li:hover {
-    color: #604a84;
+    color: var(--accent);
+  }
+
+  #themeToggle {
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  #themeToggle:hover {
+    color: var(--accent);
+    transform: rotate(20deg);
   }
 
   /* Tablet */

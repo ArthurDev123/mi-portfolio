@@ -49,7 +49,7 @@
   button {
     padding: clamp(0.6rem, 2vw, 24px);
     margin: clamp(0.2rem, 0.5vw, 5px);
-    background-color: #604a84;
+    background-color: var(--accent);
     border-style: none;
     border-radius: 5px;
     font-weight: bold;
@@ -60,11 +60,12 @@
     align-items: center;
     gap: clamp(0.3rem, 1vw, 0.8rem);
     white-space: nowrap;
+    color: var(--text-primary);
   }
 
   button:hover {
     transform: scale(1.1);
-    background-color: #7873f5;
+    background-color: var(--accent-light);
   }
 
   button:active {
