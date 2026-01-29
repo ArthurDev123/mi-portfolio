@@ -14,7 +14,7 @@
     <h2>Mi trayectoria</h2>
     <h3>Educación y trabajo</h3>
     <section id="eyt">
-      <div class="jobs">
+      <div class="jobs" id="jobsBtn">
         <img
           class="job_icon"
           src="/images/business_center_40dp_FFFFFF_FILL0_wght400_GRAD0_opsz40.svg"
@@ -26,7 +26,7 @@
           alt=""
         />
       </div>
-      <div class="studies">
+      <div class="studies" id="studiesBtn">
         <img
           class="studies_icon"
           src="/images/school_40dp_FFFFFF_FILL0_wght400_GRAD0_opsz40.svg"
@@ -39,21 +39,89 @@
         />
       </div>
     </section>
-    <div class="div_linea-vertical">
-      <div class="linea-vertical"></div>
-      <span class="linea-vertical-icon"
-        ><img
-          src="/images/business_center_28dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"
-          alt=""
-        /></span
-      >
+
+    <div class="timeline-container">
+      <div id="jobsContent" class="timeline-content active">
+        <div class="timeline-item left">
+          <h3>Software Developer</h3>
+          <p class="date">2023 - Presente</p>
+        </div>
+        <div class="timeline-item left">
+          <h3>Junior Developer</h3>
+          <p class="date">2022 - 2023</p>
+        </div>
+      </div>
+
+      <div class="timeline-center">
+        <div class="timeline-line"></div>
+        <span class="timeline-dot" id="timelineIcon">
+          <img
+            src="/images/business_center_28dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"
+            alt=""
+          />
+        </span>
+      </div>
+
+      <div id="educationContent" class="timeline-content">
+        <div class="timeline-item right">
+          <h3>Ingeniería Multimedia</h3>
+          <p class="date">2021 - Presente</p>
+        </div>
+        <div class="timeline-item right">
+          <h3>Bachillerato Tecnológico</h3>
+          <p class="date">2019 - 2021</p>
+        </div>
+      </div>
     </div>
   </section>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const jobsBtn = document.getElementById('jobsBtn');
+    const studiesBtn = document.getElementById('studiesBtn');
+    const jobsContent = document.getElementById('jobsContent');
+    const educationContent = document.getElementById('educationContent');
+    const timelineIcon = document.getElementById('timelineIcon');
+
+    if (jobsBtn && studiesBtn && jobsContent && educationContent && timelineIcon) {
+      jobsBtn.addEventListener('click', () => {
+        jobsContent.classList.add('active');
+        educationContent.classList.remove('active');
+        jobsBtn.classList.add('active');
+        studiesBtn.classList.remove('active');
+        
+        timelineIcon.innerHTML = `
+          <img
+            src="/images/business_center_28dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"
+            alt=""
+          />
+        `;
+      });
+
+      studiesBtn.addEventListener('click', () => {
+        educationContent.classList.add('active');
+        jobsContent.classList.remove('active');
+        studiesBtn.classList.add('active');
+        jobsBtn.classList.remove('active');
+        
+        timelineIcon.innerHTML = `
+          <img
+            src="/images/school_40dp_FFFFFF_FILL0_wght400_GRAD0_opsz40.svg"
+            alt=""
+          />
+        `;
+      });
+    }
+  });
+</script>
+
 <style>
   #second p {
     max-width: 100%;
     padding: 0 clamp(1rem, 5vw, 2rem);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    line-height: 1.6;
   }
 
   #aboutme {
@@ -76,14 +144,14 @@
 
   #second h2 {
     margin: 0;
-    font-size: clamp(1.4rem, 5vw, 2.2rem);
+   font-size: clamp(1.75rem, 5vw, 2.75rem);
   }
 
   #second h3 {
     margin: clamp(0.5rem, 1vw, 1rem) 0 0 0;
     font-weight: 400;
     color: #d8d8d8;
-    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
   }
 
   #trayectoria {
@@ -98,14 +166,14 @@
 
   #trayectoria h2 {
     margin: 0;
-    font-size: clamp(1.4rem, 5vw, 2.2rem);
+    font-size: clamp(1.4rem, 4vw, 2.6rem);
   }
 
   #trayectoria h3 {
     margin: clamp(0.5rem, 1vw, 1rem) 0 0 0;
     font-weight: 400;
     color: #d8d8d8;
-    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
   }
 
   #eyt {
@@ -125,6 +193,117 @@
   #eyt h2:hover {
     color: #604a84;
     cursor: pointer;
+  }
+
+  #eyt h2:hover,
+  .jobs.active h2,
+  .studies.active h2 {
+    color: #604a84;
+  }
+
+  .jobs.active,
+  .studies.active {
+    opacity: 1;
+  }
+
+  .jobs:not(.active),
+  .studies:not(.active) {
+    opacity: 0.5;
+  }
+
+  .timeline-container {
+    display: flex;
+    gap: 0;
+    margin-top: clamp(2rem, 4vw, 50px);
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+    box-sizing: border-box;
+  }
+
+  .timeline-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .timeline-line {
+    width: clamp(2px, 0.4vw, 4px);
+    height: clamp(200px, 50vw, 350px);
+    background-color: #604a84;
+  }
+
+  .timeline-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(45px, 8vw, 70px);
+    height: clamp(45px, 8vw, 70px);
+    border-radius: 50%;
+    background-color: #604a84;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .timeline-dot img {
+    width: clamp(20px, 4vw, 35px);
+    height: clamp(20px, 4vw, 35px);
+  }
+
+  .timeline-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .timeline-content.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .timeline-item {
+    padding: clamp(0.8rem, 1.5vw, 1.2rem);
+    border-radius: clamp(4px, 0.8vw, 8px);
+    background: rgba(96, 74, 132, 0.08);
+    border: clamp(1px, 0.3vw, 2px) solid #604a84;
+    max-width: clamp(180px, 35vw, 280px);
+  }
+
+  .timeline-item.left {
+    align-self: flex-end;
+    text-align: right;
+    margin-right: clamp(1rem, 3vw, 2rem);
+  }
+
+  .timeline-item.right {
+    align-self: flex-start;
+    text-align: left;
+    margin-left: clamp(1rem, 3vw, 2rem);
+  }
+
+  .timeline-item h3 {
+    margin: 0 0 clamp(0.2rem, 0.4vw, 0.4rem) 0;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: white;
+  }
+
+  .timeline-item .date {
+    margin: 0;
+    font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+    color: #a8a8ff;
+    font-weight: bold;
   }
 
   .jobs,
@@ -167,6 +346,91 @@
 
   /* Tablet */
   @media (max-width: 768px) {
+    .timeline-container {
+      flex-direction: column;
+      gap: clamp(1rem, 3vw, 1.5rem);
+      padding: 0 clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .timeline-center {
+      order: 2;
+      height: auto;
+      min-height: clamp(150px, 30vw, 200px);
+      flex: 1;
+      width: clamp(40px, 8vw, 60px);
+    }
+
+    .timeline-line {
+      height: 100%;
+    }
+
+    #jobsContent {
+      order: 1;
+    }
+
+    #educationContent {
+      order: 3;
+    }
+
+    .timeline-content {
+      gap: clamp(1rem, 2vw, 1.5rem);
+      padding: 0;
+    }
+
+    .timeline-item {
+      padding: clamp(0.6rem, 1.2vw, 0.9rem);
+      max-width: clamp(140px, 40vw, 200px);
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+      margin: 0;
+      align-self: center;
+      text-align: center;
+    }
+
+    .timeline-item h3 {
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+    }
+
+    .timeline-item .date {
+      font-size: clamp(0.6rem, 1.1vw, 0.7rem);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .timeline-container {
+      padding: 0 clamp(0.5rem, 1.5vw, 0.8rem);
+    }
+
+    .timeline-center {
+      min-height: clamp(120px, 25vw, 150px);
+      width: clamp(30px, 6vw, 40px);
+    }
+
+    .timeline-line {
+      width: clamp(1.5px, 0.3vw, 2px);
+    }
+
+    .timeline-dot {
+      width: clamp(35px, 6vw, 45px);
+      height: clamp(35px, 6vw, 45px);
+    }
+
+    .timeline-item {
+      max-width: clamp(120px, 35vw, 160px);
+      padding: clamp(0.5rem, 1vw, 0.8rem);
+    }
+
+    .timeline-item h3 {
+      font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+    }
+
+    .timeline-item .date {
+      font-size: clamp(0.55rem, 1vw, 0.65rem);
+    }
+  }
     #aboutme {
       padding: clamp(0.5rem, 2vw, 1rem);
     }
