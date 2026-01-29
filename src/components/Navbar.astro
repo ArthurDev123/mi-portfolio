@@ -3,63 +3,136 @@
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dark_mode"
 />
 
-<nav>
-  <a href="">Español/English</a>
+<nav id="navbar">
+  <a href="" class="language-toggle">Español/English</a>
   <ul>
-    <li><a href="aboutme">Sobre mí</a></li>
+    <li><a href="#aboutme">Sobre mí</a></li>
     <li><a href="#projects">Proyectos</a></li>
     <li><a href="#contact">Contactame</a></li>
-    <li><span class="material-symbols-outlined" > dark_mode </span></li>
+    <li><span class="material-symbols-outlined">dark_mode</span></li>
   </ul>
 </nav>
+
+<script>
+  let lastScrollTop = 0;
+  const navbar = document.getElementById('navbar');
+
+  window.addEventListener('scroll', function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (navbar) {
+      if (currentScroll > lastScrollTop && currentScroll > 80) {
+        // Deslizando hacia abajo y hemos pasado los primeros 80px
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        // Deslizando hacia arriba
+        navbar.style.transform = 'translateY(0)';
+      }
+    }
+    
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
+</script>
 
 <style>
   nav {
     display: flex;
     background: transparent;
-    padding: 1rem;
-    gap: 30rem;
-    font-size: 0.9rem;
+    padding: clamp(0.5rem, 2vw, 1rem);
+    gap: clamp(1rem, 10vw, 30rem);
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
     justify-content: center;
     align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    max-width: 1600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .language-toggle {
+    white-space: nowrap;
   }
 
   ul {
     display: flex;
-    gap: 1.8rem;
+    gap: clamp(0.8rem, 3vw, 1.8rem);
     list-style: none;
-    justify-content: right;
+    justify-content: flex-end;
     margin: 0;
     padding: 0;
     cursor: pointer;
+    flex-wrap: wrap;
+    align-items: center;
   }
-  .material-symbols-outlined{
-    font-size: 22px;
+
+  .material-symbols-outlined {
+    font-size: clamp(18px, 4vw, 24px);
     cursor: pointer;
+    transition: color 0.3s ease;
   }
 
   a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
   }
 
   a:hover {
-    color: #604a84; /* un turquesa para destacar */
+    color: #604a84;
   }
+
   li:hover {
-    color: #604a84; /* un turquesa para destacar */
+    color: #604a84;
   }
+
+  /* Tablet */
   @media (max-width: 768px) {
-    nav{
-      gap: 6rem;
-      margin-left: 3rem;
+    nav {
+      gap: clamp(0.5rem, 5vw, 6rem);
+      padding: clamp(0.5rem, 2vw, 1rem);
     }
-    ul{
-      gap:1rem
+
+    ul {
+      gap: clamp(0.5rem, 2vw, 1rem);
     }
-    a{
-      font-size: .4rem;
+
+    a {
+      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+    }
+
+    .material-symbols-outlined {
+      font-size: clamp(16px, 3vw, 20px);
     }
   }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    nav {
+      gap: clamp(0.3rem, 3vw, 1rem);
+      padding: clamp(0.3rem, 1vw, 0.7rem);
+    }
+
+    .language-toggle {
+      font-size: clamp(0.5rem, 1vw, 0.6rem);
+    }
+
+    ul {
+      gap: clamp(0.3rem, 1.5vw, 0.8rem);
+    }
+
+    a {
+      font-size: clamp(0.5rem, 1.2vw, 0.7rem);
+    }
+  }
+</style>
 </style>

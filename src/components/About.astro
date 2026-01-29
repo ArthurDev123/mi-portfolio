@@ -52,31 +52,38 @@
 </section>
 <style>
   #second p {
-    max-width: 950px;
+    max-width: 100%;
+    padding: 0 clamp(1rem, 5vw, 2rem);
   }
+
   #aboutme {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding: 0;
+    padding: clamp(1rem, 3vw, 2rem);
+    width: 100%;
   }
+
   #second {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
+
   #second h2 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
   }
+
   #second h3 {
-    margin: 0;
+    margin: clamp(0.5rem, 1vw, 1rem) 0 0 0;
     font-weight: 400;
     color: #d8d8d8;
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 2vw, 1rem);
   }
 
   #trayectoria {
@@ -84,122 +91,171 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: clamp(1.5rem, 3vw, 30px);
+    width: 100%;
+    padding: 0 clamp(1rem, 3vw, 2rem);
   }
+
   #trayectoria h2 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
   }
+
   #trayectoria h3 {
-    margin: 0;
+    margin: clamp(0.5rem, 1vw, 1rem) 0 0 0;
     font-weight: 400;
     color: #d8d8d8;
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 2vw, 1rem);
   }
+
   #eyt {
     display: flex;
-    gap: 28px;
+    gap: clamp(1rem, 4vw, 28px);
     justify-content: center;
     align-items: center;
-    margin-top: 75px;
+    margin-top: clamp(2rem, 4vw, 75px);
+    flex-wrap: wrap;
   }
+
   #eyt h2 {
-    font-size: 1.7rem;
+    font-size: clamp(1rem, 3vw, 1.7rem);
+    transition: color 0.3s ease;
   }
+
   #eyt h2:hover {
     color: #604a84;
     cursor: pointer;
   }
-  .jobs {
-    display: flex;
-    gap: 5px;
-  }
+
+  .jobs,
   .studies {
     display: flex;
-    gap: 5px;
+    gap: clamp(2px, 1vw, 5px);
+    align-items: center;
+    flex-direction: column;
   }
+
   .div_linea-vertical {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: clamp(1rem, 2vw, 50px);
   }
+
   .linea-vertical {
-    width: 3px; /* grosor */
-    height: 210px; /* alto de la línea */
+    width: clamp(1.5px, 0.3vw, 3px);
+    height: clamp(150px, 40vw, 210px);
     background-color: #f4f4f4;
-    margin-top: 50px;
   }
+
   .linea-vertical-icon {
     position: absolute;
     display: flex;
     background-color: #604a84;
-    height: 60px;
-    width: 60px;
+    height: clamp(40px, 8vw, 60px);
+    width: clamp(40px, 8vw, 60px);
     border-radius: 50%;
-    margin-bottom: 50px;
+    margin-bottom: clamp(2rem, 4vw, 50px);
     align-items: center;
     justify-content: center;
   }
-  @media (max-width: 768px) {
-    #second h2 {
-      font-size: 1.5rem;
-    }
-    #second h3 {
-      font-size: 0.75rem;
-    }
-    #second p {
-      margin-top: 30px;
-      max-width: 45%;
-      font-size: .7rem;
-      text-align: center;
-    }
-    #eyt h2 {
-    font-size: .5rem;
-  }
-   #trayectoria h2 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  #trayectoria h3 {
-    margin: 0;
-    font-weight: 400;
-    color: #d8d8d8;
-    font-size: .75rem;
-  }
-   #eyt {
-    display: flex;
-    gap: 13px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 45px;
-  }
-  img{
-    height:30px;
-    width: 28px;
-  }
-  
-  .linea-vertical-icon {
-    position: absolute;
-    display: flex;
-    background-color: #604a84;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    margin-bottom: 50px;
-    align-items: center;
-    justify-content: center;
-  }
+
   .linea-vertical-icon img {
-   height: 20px;
-   width: 20px;
-  }
-  .linea-vertical {
-    width: 1.5px; /* grosor */
-    height: 220px; /* alto de la línea */
-    background-color: #f4f4f4;
-    margin-top: 60px;
+    height: clamp(15px, 4vw, 25px);
+    width: clamp(15px, 4vw, 25px);
   }
 
+  /* Tablet */
+  @media (max-width: 768px) {
+    #aboutme {
+      padding: clamp(0.5rem, 2vw, 1rem);
+    }
 
+    #second p {
+      max-width: 90%;
+      font-size: clamp(0.75rem, 2vw, 1rem);
+      text-align: center;
+      margin-top: clamp(1rem, 2vw, 30px);
+    }
+
+    #second h2 {
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+
+    #second h3 {
+      font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+    }
+
+    #trayectoria h2 {
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+
+    #trayectoria h3 {
+      font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+    }
+
+    #eyt {
+      gap: clamp(0.8rem, 3vw, 13px);
+      margin-top: clamp(1.5rem, 3vw, 45px);
+    }
+
+    #eyt h2 {
+      font-size: clamp(0.6rem, 2vw, 0.8rem);
+    }
+
+    .jobs,
+    .studies {
+      gap: clamp(1px, 0.8vw, 3px);
+    }
+
+    .linea-vertical {
+      height: clamp(120px, 30vw, 220px);
+    }
+
+    .linea-vertical-icon {
+      height: clamp(35px, 6vw, 40px);
+      width: clamp(35px, 6vw, 40px);
+      margin-bottom: clamp(1.5rem, 3vw, 50px);
+    }
+
+    .linea-vertical-icon img {
+      height: clamp(12px, 3vw, 20px);
+      width: clamp(12px, 3vw, 20px);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    #aboutme {
+      padding: clamp(0.3rem, 1.5vw, 0.5rem);
+    }
+
+    #second p {
+      max-width: 95%;
+      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+    }
+
+    #trayectoria {
+      padding: 0 clamp(0.5rem, 1vw, 1rem);
+    }
+
+    #eyt {
+      gap: clamp(0.5rem, 2vw, 8px);
+      margin-top: clamp(1rem, 2vw, 30px);
+    }
+
+    #eyt h2 {
+      font-size: clamp(0.55rem, 1.5vw, 0.65rem);
+    }
+
+    .linea-vertical {
+      height: clamp(100px, 25vw, 150px);
+    }
+
+    .linea-vertical-icon {
+      height: clamp(30px, 5vw, 35px);
+      width: clamp(30px, 5vw, 35px);
+      margin-bottom: clamp(1rem, 2vw, 30px);
+    }
   }
 </style>

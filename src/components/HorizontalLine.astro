@@ -4,12 +4,21 @@
     height: 1px;
     border: none;
     background-color: #f4f4f4;
-    margin-top: 220px;
+    margin-top: clamp(1.5rem, 5vw, 220px);
+    width: clamp(80%, 90vw, 100%);
   }
+
   @media (max-width: 768px) {
     hr {
-      margin-top: 100px;
-      width: 45%;
+      margin-top: clamp(1rem, 3vw, 100px);
+      width: clamp(60%, 80vw, 90%);
+    }
+  }
+
+  @media (max-width: 480px) {
+    hr {
+      margin-top: clamp(0.8rem, 2vw, 60px);
+      width: clamp(70%, 85vw, 95%);
     }
   }
 </style>

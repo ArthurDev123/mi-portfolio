@@ -47,114 +47,185 @@ const { title, img, description, tecno = [], github } = Astro.props;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    padding: clamp(0.5rem, 2vw, 1rem);
   }
 
   #project {
-    margin-top: 60px;
-    padding: 40px;
+    margin-top: clamp(2rem, 5vw, 60px);
+    padding: clamp(1rem, 3vw, 40px);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: clamp(1rem, 3vw, 20px);
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #info-project {
-    max-width: 550px;
+    max-width: 100%;
+    min-width: clamp(250px, 80vw, 550px);
     overflow-wrap: break-word;
   }
+
   #info-project h2 {
-    font-size: 2.6rem;
+    font-size: clamp(1.4rem, 4vw, 2.6rem);
+    margin: 0 0 clamp(0.5rem, 1vw, 1rem) 0;
   }
+
   #info-project h3 {
     background-color: #604a84;
-    padding: 20px;
+    padding: clamp(0.8rem, 2vw, 20px);
     color: white;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
     border-radius: 15px;
     box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.4);
+    margin-bottom: clamp(0.5rem, 1vw, 1rem);
   }
+
   #img-project {
-    width: 750px;
+    width: clamp(200px, 90vw, 1000px);
     flex: 1;
+    min-width: clamp(200px, 90vw, 600px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   #img-project img {
-    max-width: 100%; /* la imagen no puede ser más ancha que el contenedor */
-    height: auto; /* mantiene la proporción */
-    display: block; /* elimina espacio extra debajo */
-    object-fit: contain; /* opcional: encaja sin recortarse */
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
+
   #tecnologia,
   #iconos {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: clamp(0.5rem, 2vw, 15px);
     align-items: center;
+    flex-wrap: wrap;
+    margin-top: clamp(0.5rem, 1vw, 1rem);
   }
+
   #tecnologia h3 {
     background-color: #6b7280;
-    padding: 6px;
-    font-size: 1rem;
+    padding: clamp(3px, 1vw, 6px);
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
     border-radius: 5px;
+    margin: 0;
   }
+
   a {
     color: white;
-  }
-  @media (max-width: 768px) {
-    #project {
-      flex-direction: column; /* columnas en móviles */
-      justify-content: center;
-      align-items: center;
-      padding: 8px;
-    }
-    #info-project h2 {
-      font-size: 1.4rem;
-    }
-    #info-project h3 {
-      font-size: 0.8rem;
-    }
-    #info-project {
-      height: 350px;
-      max-width: 350px;
-      overflow-wrap: break-word;
-    }
-    #tecnologia,
-    #iconos {
-      display: flex;
-      flex-direction: row;
-      gap: 5px;
-      align-items: center;
-    }
-    #tecnologia h3 {
-      background-color: #6b7280;
-      padding: 4.5px;
-      font-size: 0.8rem;
-      border-radius: 5px;
-    }
-    svg {
-      height: 30px;
-      width: 30px;
-    }
-    img {
-      height: 35px;
-      width: 35px;
-    }
-     #img-project {
-    width: 750px;
-    height: 500px;
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-  #img-project img{
-    margin: 0;
-    width: 45%; /* la imagen no puede ser más ancha que el contenedor */
-    display: block; /* elimina espacio extra debajo */
-    object-fit: contain; /* opcional: encaja sin recortarse */
+    transition: transform 0.3s ease;
   }
 
+  a:hover {
+    transform: scale(1.1);
+  }
 
+  svg,
+  img {
+    width: clamp(30px, 5vw, 40px);
+    height: clamp(30px, 5vw, 40px);
+  }
+
+  /* Tablet */
+  @media (max-width: 768px) {
+    #project {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(0.5rem, 2vw, 1rem);
+      gap: clamp(0.8rem, 2vw, 1.5rem);
+    }
+
+    #info-project {
+      max-width: 100%;
+      min-width: auto;
+    }
+
+    #info-project h2 {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      text-align: center;
+    }
+
+    #info-project h3 {
+      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+      padding: clamp(0.6rem, 1.5vw, 1rem);
+    }
+
+    #img-project {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+
+    #tecnologia,
+    #iconos {
+      gap: clamp(0.3rem, 1.5vw, 8px);
+      justify-content: center;
+    }
+
+    #tecnologia h3 {
+      padding: clamp(2px, 0.8vw, 4.5px);
+      font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+    }
+
+    svg,
+    img {
+      width: clamp(25px, 4vw, 35px);
+      height: clamp(25px, 4vw, 35px);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    #projects {
+      padding: clamp(0.3rem, 1.5vw, 0.5rem);
+    }
+
+    #project {
+      padding: clamp(0.3rem, 1vw, 0.8rem);
+      gap: clamp(0.5rem, 1.5vw, 1rem);
+      margin-top: clamp(1rem, 3vw, 30px);
+    }
+
+    #info-project h2 {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+    }
+
+    #info-project h3 {
+      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+      padding: clamp(0.5rem, 1vw, 0.8rem);
+    }
+
+    #img-project {
+      width: 100%;
+      max-width: 90vw;
+    }
+
+    #tecnologia h3 {
+      font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+      padding: clamp(2px, 0.7vw, 3px);
+    }
+
+    svg,
+    img {
+      width: clamp(20px, 3vw, 30px);
+      height: clamp(20px, 3vw, 30px);
+    }
   }
 </style>
