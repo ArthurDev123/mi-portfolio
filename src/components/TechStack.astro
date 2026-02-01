@@ -1,0 +1,194 @@
+---
+interface Tech {
+  name: string;
+  category: string;
+}
+
+interface Props {
+  technologies: Tech[];
+}
+
+const { technologies } = Astro.props;
+
+// Mapeo de iconos para tecnologías
+const techIcons: Record<string, string> = {
+  "JavaScript": "https://cdn.simpleicons.org/javascript",
+  "TypeScript": "https://cdn.simpleicons.org/typescript",
+  "React": "https://cdn.simpleicons.org/react",
+  "Node.js": "https://cdn.simpleicons.org/nodedotjs",
+  "MongoDB": "https://cdn.simpleicons.org/mongodb",
+  "PostgreSQL": "https://cdn.simpleicons.org/postgresql",
+  "Firebase": "https://cdn.simpleicons.org/firebase",
+  "Git": "https://cdn.simpleicons.org/git",
+  "GitHub": "https://cdn.simpleicons.org/github",
+  "Postman": "https://cdn.simpleicons.org/postman",
+  "Docker": "https://cdn.simpleicons.org/docker",
+  "HTML": "https://cdn.simpleicons.org/html5",
+  "SCSS": "https://cdn.simpleicons.org/sass",
+  "Python": "https://cdn.simpleicons.org/python",
+  "Astro": "https://cdn.simpleicons.org/astro",
+  "Vue.js": "https://cdn.simpleicons.org/vuedotjs",
+  "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss",
+  "Next.js": "https://cdn.simpleicons.org/nextdotjs",
+  "Express": "https://cdn.simpleicons.org/express"
+};
+
+const getTechIcon = (name: string): string | undefined => {
+  return techIcons[name];
+};
+const techColors: Record<string, { bg: string; border: string; text: string }> = {
+  // Lenguajes
+  "JavaScript": { bg: "#fef5e7", border: "#f39c12", text: "#f39c12" },
+  "TypeScript": { bg: "#e8f5ff", border: "#2b7a9b", text: "#2b7a9b" },
+  "Python": { bg: "#f0f3ff", border: "#3776ab", text: "#3776ab" },
+  "HTML": { bg: "#fff0e6", border: "#e34c26", text: "#e34c26" },
+  "CSS": { bg: "#e8f5ff", border: "#1572b6", text: "#1572b6" },
+  "SCSS": { bg: "#f5e8ff", border: "#c69", text: "#c69" },
+  
+  // Frontend
+  "React": { bg: "#e0f7ff", border: "#61dafb", text: "#61dafb" },
+  "Astro": { bg: "#fff5e6", border: "#ff5e00", text: "#ff5e00" },
+  "Vue.js": { bg: "#e8fff0", border: "#42b983", text: "#42b983" },
+  "Tailwind CSS": { bg: "#e0f7ff", border: "#06b6d4", text: "#06b6d4" },
+  "Next.js": { bg: "#f5f5f5", border: "#000000", text: "#000000" },
+  
+  // Backend
+  "Node.js": { bg: "#e8fff0", border: "#68a063", text: "#68a063" },
+  "Express": { bg: "#f5f5f5", border: "#000000", text: "#000000" },
+  "MongoDB": { bg: "#e8fff0", border: "#13aa52", text: "#13aa52" },
+  "PostgreSQL": { bg: "#e8eeff", border: "#336791", text: "#336791" },
+  "Firebase": { bg: "#fff0e6", border: "#ffa000", text: "#ffa000" },
+  
+  // Herramientas
+  "Git": { bg: "#fff0e6", border: "#f1502f", text: "#f1502f" },
+  "GitHub": { bg: "#f5f5f5", border: "#000000", text: "#000000" },
+  "Postman": { bg: "#fff0e6", border: "#ff6c37", text: "#ff6c37" },
+  "Docker": { bg: "#e0f7ff", border: "#2496ed", text: "#2496ed" }
+};
+
+// Agrupar tecnologías por categoría
+const groupedTechs = technologies.reduce((acc, tech) => {
+  const category = tech.category;
+  if (!acc[category]) {
+    acc[category] = [];
+  }
+  acc[category].push(tech.name);
+  return acc;
+}, {} as Record<string, string[]>);
+
+const categories = Object.keys(groupedTechs);
+---
+
+<section class="tech-section">
+  <div class="tech-container">
+    {
+      categories.map((category) => (
+        <div class="tech-category">
+          <h4>{category}</h4>
+          <div class="tech-tags">
+            {groupedTechs[category].map((tech) => {
+              const colors = techColors[tech] || { bg: "rgba(120, 115, 245, 0.15)", border: "rgba(120, 115, 245, 0.4)", text: "var(--accent-light)" };
+              return (
+                <span 
+                  class="tech-tag" 
+                  style={`background-color: ${colors.bg}; border-color: ${colors.border}; color: ${colors.text};`}
+                >
+                  {getTechIcon(tech) && (
+                    <img 
+                      src={getTechIcon(tech)} 
+                      alt={tech}
+                      class="tech-icon"
+                      title={tech}
+                    />
+                  )}
+                  <span class="tech-name">{tech}</span>
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .tech-section {
+    width: 100%;
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  .tech-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    width: 100%;
+  }
+
+  .tech-category h4 {
+    margin: 0 0 clamp(1rem, 1.5vw, 1.3rem) 0;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 1vw, 0.8rem);
+  }
+
+  .tech-tag {
+    padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem);
+    border: 2px solid;
+    border-radius: clamp(0.3rem, 0.5vw, 0.5rem);
+    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .tech-icon {
+    width: clamp(1rem, 1.5vw, 1.3rem);
+    height: clamp(1rem, 1.5vw, 1.3rem);
+    object-fit: contain;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
+  }
+
+  .tech-name {
+    display: inline;
+  }
+
+  .tech-tag:hover {
+    box-shadow: 0 0 15px currentColor;
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+  }
+
+  /* Tablet */
+  @media (max-width: 768px) {
+    .tech-container {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: clamp(1rem, 2vw, 1.5rem);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .tech-section {
+      padding: clamp(0.75rem, 2vw, 1.5rem);
+    }
+
+    .tech-container {
+      grid-template-columns: 1fr;
+      gap: clamp(0.8rem, 1.5vw, 1.2rem);
+    }
+
+    .tech-tag {
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    }
+  }
+</style>

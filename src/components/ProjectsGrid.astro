@@ -1,0 +1,191 @@
+---
+interface Project {
+  id: string;
+  title: string;
+  image: string;
+  link: string;
+  github: string;
+}
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="projects-grid-section">
+  <div class="grid-container">
+    {
+      projects.map((project) => (
+        <div class="project-card" title={project.title}>
+          <a href={project.link} class="card-link">
+            <div class="card-image">
+              <img src={project.image} alt={project.title} />
+            </div>
+            <div class="card-info">
+              <h3>{project.title}</h3>
+            </div>
+          </a>
+          <a href={project.github} class="github-icon" title="Ver en GitHub" target="_blank" rel="noopener noreferrer">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .projects-grid-section {
+    width: 100%;
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    width: 100%;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: clamp(0.5rem, 1vw, 0.75rem);
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 1;
+  }
+
+  .card-link {
+    display: flex;
+    flex-direction: column;
+    border-radius: clamp(0.5rem, 1vw, 0.75rem);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .card-link:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(120, 115, 245, 0.3);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .card-link:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: clamp(0.75rem, 2vw, 1rem);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: 100%;
+  }
+
+  .card-info h3 {
+    margin: 0;
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    word-wrap: break-word;
+  }
+
+  .github-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(2.5rem, 8vw, 3.5rem);
+    height: clamp(2.5rem, 8vw, 3.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(120, 115, 245, 0.9);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .github-icon:hover {
+    background: rgba(120, 115, 245, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .project-card:hover .github-icon {
+    opacity: 1;
+  }
+
+  .github-icon svg {
+    width: 100%;
+    height: 100%;
+    padding: clamp(0.4rem, 1vw, 0.6rem);
+  }
+
+  /* Tablet - 4 columnas */
+  @media (max-width: 1024px) {
+    .grid-container {
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+  }
+
+  /* Tablet pequeño - 3 columnas */
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(0.5rem, 1vw, 1rem);
+    }
+
+    .card-link:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Mobile - 2 columnas */
+  @media (max-width: 480px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(0.5rem, 1vw, 0.75rem);
+    }
+
+    .card-info h3 {
+      font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+    }
+
+    .github-icon {
+      opacity: 1;
+    }
+  }
+</style>

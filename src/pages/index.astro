@@ -8,6 +8,9 @@ import SectionButtonsFirst from "../components/SectionButtonsFirst.astro";
 import About from "../components/About.astro";
 import Projects from "../components/Projects.astro";
 import ProjectsInverse from "../components/Projects_Inverse.astro";
+import ProjectsGrid from "../components/ProjectsGrid.astro";
+import Skills from "../components/Skills.astro";
+import TechStack from "../components/TechStack.astro";
 import '../styles/global.css'
 ---
 
@@ -59,6 +62,147 @@ También integré iconos dinámicos y secciones modulares para mostrar mis proye
         tecno={["HTML", "CSS", "JavaScript", "Astro", "SCSS"]}
         github="https://github.com/ArthurDev123/mi-portfolio"
         link="https://clikkofficial.netlify.app/"
+      />
+
+      <HorizontalLine />
+      <div id="more-projects">
+        <h2>Más Proyectos</h2>
+        <h3>Explora otros trabajos destacados</h3>
+      </div>
+
+      <ProjectsGrid
+        projects={[
+          {
+            id: "1",
+            title: "Proyecto 1",
+            image: "/images/placeholder-1.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "2",
+            title: "Proyecto 2",
+            image: "/images/placeholder-2.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "3",
+            title: "Proyecto 3",
+            image: "/images/placeholder-3.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "4",
+            title: "Proyecto 4",
+            image: "/images/placeholder-4.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "5",
+            title: "Proyecto 5",
+            image: "/images/placeholder-5.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "6",
+            title: "Proyecto 6",
+            image: "/images/placeholder-6.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "7",
+            title: "Proyecto 7",
+            image: "/images/placeholder-7.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "8",
+            title: "Proyecto 8",
+            image: "/images/placeholder-8.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "9",
+            title: "Proyecto 9",
+            image: "/images/placeholder-9.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          },
+          {
+            id: "10",
+            title: "Proyecto 10",
+            image: "/images/placeholder-10.png",
+            link: "#",
+            github: "https://github.com/ArthurDev123"
+          }
+        ]}
+      />
+
+      <HorizontalLine />
+      <div id="skills-section-header">
+        <h2>Habilidades</h2>
+        <h3>Mis competencias profesionales</h3>
+      </div>
+
+      <Skills
+        softSkills={[
+          { name: "Comunicación" },
+          { name: "Trabajo en Equipo" },
+          { name: "Resolución de Problemas" },
+          { name: "Liderazgo" },
+          { name: "Adaptabilidad" },
+          { name: "Pensamiento Crítico" }
+        ]}
+        hardSkills={[
+          { name: "JavaScript", level: "Alto" },
+          { name: "TypeScript", level: "Medio" },
+          { name: "React", level: "Alto" },
+          { name: "Node.js", level: "Alto" },
+          { name: "MongoDB", level: "Medio" },
+          { name: "Astro", level: "Alto" }
+        ]}
+      />
+
+      <HorizontalLine />
+      <div id="tech-section-header">
+        <h2>Tecnologías</h2>
+        <h3>Lenguajes y herramientas que manejo</h3>
+      </div>
+
+      <TechStack
+        technologies={[
+          { name: "JavaScript", category: "Lenguajes" },
+          { name: "TypeScript", category: "Lenguajes" },
+          { name: "HTML", category: "Lenguajes" },
+          { name: "CSS", category: "Lenguajes" },
+          { name: "SCSS", category: "Lenguajes" },
+          { name: "Python", category: "Lenguajes" },
+          
+          { name: "React", category: "Frontend" },
+          { name: "Astro", category: "Frontend" },
+          { name: "Vue.js", category: "Frontend" },
+          { name: "Tailwind CSS", category: "Frontend" },
+          { name: "Next.js", category: "Frontend" },
+          
+          { name: "Node.js", category: "Backend" },
+          { name: "Express", category: "Backend" },
+          { name: "MongoDB", category: "Backend" },
+          { name: "PostgreSQL", category: "Backend" },
+          { name: "Firebase", category: "Backend" },
+          
+          { name: "Git", category: "Herramientas" },
+          { name: "GitHub", category: "Herramientas" },
+          { name: "VS Code", category: "Herramientas" },
+          { name: "Postman", category: "Herramientas" },
+          { name: "Docker", category: "Herramientas" }
+        ]}
       />
     </main>
   </body>
@@ -136,6 +280,69 @@ También integré iconos dinámicos y secciones modulares para mostrar mis proye
   }
 
   #third h3 {
+    margin: clamp(0.5rem, 1vw, 1rem) 0 0 0;
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-size: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  #more-projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: clamp(1rem, 3vw, 2rem);
+    margin-top: clamp(1rem, 2vw, 2rem);
+  }
+
+  #more-projects h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
+  }
+
+  #more-projects h3 {
+    margin: clamp(0.5rem, 1vw, 1rem) 0 0 0;
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-size: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  #skills-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: clamp(1rem, 3vw, 2rem);
+    margin-top: clamp(1rem, 2vw, 2rem);
+  }
+
+  #skills-section-header h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
+  }
+
+  #skills-section-header h3 {
+    margin: clamp(0.5rem, 1vw, 1rem) 0 0 0;
+    font-weight: 400;
+    color: var(--text-secondary);
+    font-size: clamp(0.75rem, 2vw, 1rem);
+  }
+
+  #tech-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: clamp(1rem, 3vw, 2rem);
+    margin-top: clamp(1rem, 2vw, 2rem);
+  }
+
+  #tech-section-header h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
+  }
+
+  #tech-section-header h3 {
     margin: clamp(0.5rem, 1vw, 1rem) 0 0 0;
     font-weight: 400;
     color: var(--text-secondary);

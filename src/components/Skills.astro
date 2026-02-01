@@ -1,0 +1,255 @@
+---
+interface SoftSkill {
+  name: string;
+}
+
+interface HardSkill {
+  name: string;
+  level: "Bajo" | "Medio" | "Alto";
+}
+
+interface Props {
+  softSkills: SoftSkill[];
+  hardSkills: HardSkill[];
+}
+
+const { softSkills, hardSkills } = Astro.props;
+
+const levelToPercentage = {
+  "Bajo": 40,
+  "Medio": 70,
+  "Alto": 90
+};
+
+// Mapeo de iconos para tecnologías
+const techIcons: Record<string, string> = {
+  "JavaScript": "https://cdn.simpleicons.org/javascript/F7DF1E",
+  "TypeScript": "https://cdn.simpleicons.org/typescript/3178C6",
+  "React": "https://cdn.simpleicons.org/react/61DAFB",
+  "Node.js": "https://cdn.simpleicons.org/nodedotjs/339933",
+  "MongoDB": "https://cdn.simpleicons.org/mongodb/47A248",
+  "PostgreSQL": "https://cdn.simpleicons.org/postgresql/4169E1",
+  "Firebase": "https://cdn.simpleicons.org/firebase/FFCA28",
+  "Git": "https://cdn.simpleicons.org/git/F05032",
+  "GitHub": "https://cdn.simpleicons.org/github/FFFFFF",
+  "VS Code": "https://cdn.simpleicons.org/visualstudiocode/007ACC",
+  "Postman": "https://cdn.simpleicons.org/postman/FF6C37",
+  "Docker": "https://cdn.simpleicons.org/docker/2496ED",
+  "HTML": "https://cdn.simpleicons.org/html5/E34C26",
+  "CSS": "https://cdn.simpleicons.org/css3/1572B6",
+  "SCSS": "https://cdn.simpleicons.org/sass/CC6699",
+  "Python": "https://cdn.simpleicons.org/python/3776AB",
+  "Astro": "https://cdn.simpleicons.org/astro/FF5D01",
+  "Vue.js": "https://cdn.simpleicons.org/vuedotjs/4FC08D",
+  "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss/06B6D4",
+  "Next.js": "https://cdn.simpleicons.org/nextdotjs/FFFFFF",
+  "Express": "https://cdn.simpleicons.org/express/FFFFFF"
+};
+
+
+
+const getIconUrl = (name: string): string | undefined => {
+  return techIcons[name];
+};
+
+---
+
+<section class="skills-section">
+  <div class="skills-container">
+    <div class="skill-category">
+      <h3>Habilidades Blandas</h3>
+      <div class="soft-skills-grid">
+        {
+          softSkills.map((skill) => (
+            <span class="soft-skill-tag">
+              <span>{skill.name}</span>
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3>Habilidades Técnicas</h3>
+      <div class="skills-grid">
+        {
+          hardSkills.map((skill) => (
+            <div class="skill-item">
+              <div class="skill-header">
+                <div class="skill-name-with-icon">
+                  {getIconUrl(skill.name) && (
+                    <img 
+                      src={getIconUrl(skill.name)} 
+                      alt={skill.name}
+                      class="skill-icon"
+                      title={skill.name}
+                    />
+                  )}
+                  <span class="skill-name">{skill.name}</span>
+                </div>
+                <span class="skill-level">{skill.level}</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style={`width: ${levelToPercentage[skill.level]}%`}></div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-section {
+    width: 100%;
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+
+  .skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+    width: 100%;
+  }
+
+  .skill-category h3 {
+    margin: 0 0 clamp(1.5rem, 2vw, 2rem) 0;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .soft-skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.6rem, 1.5vw, 1rem);
+  }
+
+  .soft-skill-tag {
+    padding: clamp(0.5rem, 1vw, 0.7rem) clamp(1rem, 2vw, 1.4rem);
+    background: rgba(120, 115, 245, 0.15);
+    border: 1px solid rgba(120, 115, 245, 0.4);
+    border-radius: clamp(0.4rem, 0.8vw, 0.6rem);
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .soft-skill-icon {
+    width: clamp(1rem, 1.8vw, 1.3rem);
+    height: clamp(1rem, 1.8vw, 1.3rem);
+    object-fit: contain;
+    filter: drop-shadow(0 0 3px rgba(120, 115, 245, 0.4));
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+
+  .soft-skill-tag:hover .soft-skill-icon {
+    filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.6));
+    transform: scale(1.15);
+  }
+
+  .soft-skill-tag:hover {
+    background: rgba(120, 115, 245, 0.3);
+    border-color: rgba(120, 115, 245, 0.7);
+    box-shadow: 0 0 10px rgba(120, 115, 245, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.2rem, 2vw, 1.8rem);
+  }
+
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .skill-name {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .skill-name-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .skill-icon {
+    width: clamp(1.2rem, 2vw, 1.5rem);
+    height: clamp(1.2rem, 2vw, 1.5rem);
+    object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(120, 115, 245, 0.4));
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+
+  .skill-item:hover .skill-icon {
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
+    transform: scale(1.1);
+  }
+
+  .skill-level {
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    font-weight: 600;
+    color: var(--accent-light);
+  }
+
+  .skill-bar {
+    width: 100%;
+    height: clamp(6px, 1vw, 10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #7873f5, #00f0ff);
+    border-radius: 10px;
+    transition: width 0.6s ease;
+    box-shadow: 0 0 10px rgba(120, 115, 245, 0.5);
+  }
+
+  /* Tablet */
+  @media (max-width: 768px) {
+    .skills-container {
+      grid-template-columns: 1fr;
+      gap: clamp(1.5rem, 3vw, 2rem);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .skills-section {
+      padding: clamp(0.75rem, 2vw, 1.5rem);
+    }
+
+    .skill-category h3 {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+    }
+
+    .skills-grid {
+      gap: clamp(1rem, 1.5vw, 1.5rem);
+    }
+
+    .soft-skill-tag {
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    }
+  }
+</style>
