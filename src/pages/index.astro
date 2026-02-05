@@ -11,6 +11,7 @@ import ProjectsInverse from "../components/Projects_Inverse.astro";
 import ProjectsGrid from "../components/ProjectsGrid.astro";
 import Skills from "../components/Skills.astro";
 import TechStack from "../components/TechStack.astro";
+import Contact from "../components/Contact.astro";
 import '../styles/global.css'
 ---
 
@@ -193,9 +194,10 @@ También integré iconos dinámicos y secciones modulares para mostrar mis proye
     </main>
   </body>
 </html>
-
-<section id="third"></section>
-<section id="contact"></section>
+<HorizontalLine />
+<section id="contact">
+  <Contact />
+</section>
 
 <Background />
 
@@ -380,6 +382,7 @@ También integré iconos dinámicos y secciones modulares para mostrar mis proye
     }
 
     #hero {
+      margin-top: 100px;
       padding: clamp(0.3rem, 1vw, 0.5rem);
     }
 
