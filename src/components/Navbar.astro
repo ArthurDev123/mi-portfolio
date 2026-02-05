@@ -131,18 +131,12 @@
   /* Tablet */
   @media (max-width: 768px) {
     nav {
-      gap: clamp(0.5rem, 5vw, 6rem);
       padding: clamp(0.5rem, 2vw, 1rem);
     }
 
     ul {
       gap: clamp(0.5rem, 2vw, 1rem);
     }
-
-    a {
-      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-    }
-
     .material-symbols-outlined {
       font-size: clamp(16px, 3vw, 20px);
     }
@@ -150,21 +144,9 @@
 
   /* Mobile */
   @media (max-width: 480px) {
-    nav {
-      gap: clamp(0.3rem, 3vw, 1rem);
-      padding: clamp(0.3rem, 1vw, 0.7rem);
-    }
 
     .language-toggle {
       font-size: clamp(0.5rem, 1vw, 0.6rem);
-    }
-
-    ul {
-      gap: clamp(0.3rem, 1.5vw, 0.8rem);
-    }
-
-    a {
-      font-size: clamp(0.5rem, 1.2vw, 0.7rem);
     }
   }
 </style>
