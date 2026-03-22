@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Mi Portfolio",
+    "description": "Portfolio de Arturo Pastor - Desarrollador de Software"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "role": "Software Engineer"
+  },
+  "projects": {
+    "title": "Mis proyectos",
+    "subtitle": "Algunos de mis proyectos",
+    "more": "Más Proyectos",
+    "explore": "Explora otros trabajos destacados",
+    "clikk": {
+      "title": "Clikk - una aplicación para gestionar grupos de amigos",
+      "description": "Clikk es una aplicación social para conocer personas y crear grupos de amigos con intereses en común. Incluye chat en tiempo real mediante WebSockets, notificaciones por correo electrónico y un sistema de suscripción premium."
+    },
+    "portfolio": {
+      "title": "Mi Portfolio",
+      "description": "Portfolio personal desarrollado con Astro para lograr un sitio rápido y optimizado. Incluye una landing page responsive, navegación sencilla y componentes reutilizables. El diseño está hecho con HTML, CSS y Flexbox, acompañado de efectos visuales como gradientes animados y un fondo dinámico de estrellas. También integré iconos dinámicos y secciones modulares para mostrar mis proyectos de forma clara y escalable."
+    },
+    "todo": "ToDo App + Login",
+    "travel": "Aplicación Web de Experiencias de Viajes",
+    "hogarnet": "HogarNet -- Plataforma de Gestión Inmobiliaria"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "subtitle": "Mis competencias profesionales",
+    "communication": "Comunicación",
+    "teamwork": "Trabajo en Equipo",
+    "problemSolving": "Resolución de Problemas",
+    "leadership": "Liderazgo",
+    "adaptability": "Adaptabilidad",
+    "criticalThinking": "Pensamiento Crítico",
+    "levels": {
+      "beginner": "Básico",
+      "intermediate": "Medio",
+      "advanced": "Alto"
+    }
+  },
+  "tech": {
+    "title": "Tecnologías",
+    "subtitle": "Lenguajes y herramientas que manejo",
+    "languages": "Lenguajes",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Herramientas"
+  }
+}

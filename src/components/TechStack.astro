@@ -6,9 +6,10 @@ interface Tech {
 
 interface Props {
   technologies: Tech[];
+  lang?: string;
 }
 
-const { technologies } = Astro.props;
+const { technologies,lang = 'es' } = Astro.props;
 
 // Mapeo de iconos para tecnologías
 const techIcons: Record<string, string> = {

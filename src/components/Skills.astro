@@ -11,14 +11,15 @@ interface HardSkill {
 interface Props {
   softSkills: SoftSkill[];
   hardSkills: HardSkill[];
+  lang?: string;
 }
 
-const { softSkills, hardSkills } = Astro.props;
+const { softSkills, hardSkills,lang = 'es' } = Astro.props;
 
 const levelToPercentage = {
   "Bajo": 40,
   "Medio": 70,
-  "Alto": 90
+  "Alto": 90,
 };
 
 // Mapeo de iconos para tecnologías

@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "My Portfolio",
+    "description": "Arturo Pastor's Portfolio - Software Developer"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "role": "Software Engineer"
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "Some of my projects",
+    "more": "More Projects",
+    "explore": "Explore other featured works",
+    "clikk": {
+      "title": "Clikk - An app for managing friend groups",
+      "description": "Clikk is a social app to meet people and create friend groups with common interests. It includes real-time chat via WebSockets, email notifications, and a premium subscription system."
+    },
+    "portfolio": {
+      "title": "My Portfolio",
+      "description": "Personal portfolio developed with Astro for a fast and optimized site. Includes a responsive landing page, simple navigation, and reusable components. The design is made with HTML, CSS and Flexbox, accompanied by visual effects like animated gradients and a dynamic starry background. I also integrated dynamic icons and modular sections to display my projects clearly and scalably."
+    },
+    "todo": "ToDo App + Login",
+    "travel": "Travel Experiences Web Application",
+    "hogarnet": "HogarNet -- Real Estate Management Platform"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "My professional competencies",
+    "communication": "Communication",
+    "teamwork": "Teamwork",
+    "problemSolving": "Problem Solving",
+    "leadership": "Leadership",
+    "adaptability": "Adaptability",
+    "criticalThinking": "Critical Thinking",
+    "levels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
+  "tech": {
+    "title": "Technologies",
+    "subtitle": "Languages and tools I work with",
+    "languages": "Languages",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Tools"
+  }
+}

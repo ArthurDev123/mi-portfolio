@@ -9,9 +9,10 @@ interface Project {
 
 interface Props {
   projects: Project[];
+  lang?: string;
 }
 
-const { projects } = Astro.props;
+const { projects,lang = 'es' } = Astro.props;
 ---
 
 <section class="projects-grid-section">

@@ -1,5 +1,5 @@
 ---
-const { title, img, description, tecno = [], github } = Astro.props;
+const { title, img, description, tecno = [], github, link, state } = Astro.props;
 ---
 
 <section id="projects">
@@ -25,7 +25,7 @@ const { title, img, description, tecno = [], github } = Astro.props;
             ></path>
           </svg></a
         >
-        <a href="https://clikkofficial.netlify.app/" target="_blank"
+        <a href={link} target="_blank"
           ><img
             width="50"
             height="50"
@@ -33,6 +33,7 @@ const { title, img, description, tecno = [], github } = Astro.props;
             alt="internet--v1"
           /></a
         >
+        {state && <span id="state">{state}</span>}
       </div>
     </div>
     <div id="img-project">
@@ -88,9 +89,9 @@ const { title, img, description, tecno = [], github } = Astro.props;
   }
 
   #img-project {
-    width: clamp(150px, 67.5vw, 750px);
+    width: clamp(200px, 90vw, 1000px);
     flex: 1;
-    min-width: clamp(150px, 67.5vw, 450px);
+    min-width: clamp(200px, 90vw, 600px);
     display: flex;
     align-items: center;
     justify-content: center;
