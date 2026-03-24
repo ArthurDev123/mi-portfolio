@@ -67,6 +67,10 @@
           <h3>Bachillerato Tecnológico</h3>
           <p class="date">2021 - 2023</p>
         </div>
+        <div class="timeline-item right">
+          <h3>Certificado en Introducción al Desarrollo con IA</h3>
+          <p class="date">2026</p>
+        </div>
       </div>
     </div>
   </section>
@@ -410,23 +414,26 @@
     .timeline-container {
       padding: 0 clamp(0.5rem, 1.5vw, 0.8rem);
       flex-direction: column;
+      gap: 1rem;
     }
 
     .timeline-center {
-      order: 2;
-      min-height: clamp(100px, 20vw, 120px);
-      width: clamp(25px, 5vw, 35px);
-      height: auto;
+      display: none;
     }
 
-    .timeline-line {
-      height: 100%;
-      width: clamp(1px, 0.2vw, 2px);
+    .timeline-content {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      padding: 0;
     }
 
-    .timeline-dot {
-      width: clamp(30px, 5vw, 40px);
-      height: clamp(30px, 5vw, 40px);
+    .timeline-content.active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     #jobsContent {
@@ -434,32 +441,51 @@
     }
 
     #educationContent {
-      order: 3;
-    }
-
-    .timeline-content {
-      gap: clamp(0.8rem, 1.5vw, 1rem);
-      padding: 0;
+      order: 2;
     }
 
     .timeline-item {
-      max-width: clamp(110px, 30vw, 150px);
-      padding: clamp(0.5rem, 1vw, 0.8rem);
+      padding: 1rem;
+      max-width: 100%;
+      border-radius: 12px;
     }
 
     .timeline-item.left,
     .timeline-item.right {
       margin: 0;
-      align-self: center;
-      text-align: center;
+      align-self: stretch;
+      text-align: left;
     }
 
     .timeline-item h3 {
-      font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+      font-size: clamp(0.9rem, 2vw, 1rem);
     }
 
     .timeline-item .date {
-      font-size: clamp(0.55rem, 1vw, 0.65rem);
+      font-size: clamp(0.7rem, 1.3vw, 0.8rem);
+    }
+
+    #eyt {
+      gap: 1.5rem;
+    }
+
+    .jobs, .studies {
+      flex: 1;
+      min-width: 120px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .timeline-container {
+      gap: 0.5rem;
+    }
+
+    .timeline-item {
+      padding: 0.8rem;
+    }
+
+    .timeline-item h3 {
+      font-size: 0.85rem;
     }
   }
 </style>
