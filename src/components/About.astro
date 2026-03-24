@@ -14,7 +14,7 @@
     <h2>Mi trayectoria</h2>
     <h3>Educación y trabajo</h3>
     <section id="eyt">
-      <div class="jobs" id="jobsBtn">
+      <div class="jobs active" id="jobsBtn">
         <img
           class="job_icon"
           src="/images/business_center_40dp_FFFFFF_FILL0_wght400_GRAD0_opsz40.svg"
@@ -252,6 +252,16 @@
   .timeline-dot img {
     width: clamp(20px, 4vw, 35px);
     height: clamp(20px, 4vw, 35px);
+  }
+
+  :global(html.light-mode) .job_icon,
+  :global(html.light-mode) .studies_icon,
+  :global(html.light-mode) #eyt img {
+    filter: brightness(0);
+  }
+
+  :global(html.light-mode) .timeline-dot img {
+    filter: brightness(0);
   }
 
   .timeline-content {

@@ -95,6 +95,7 @@ p {
   body {
     gap: clamp(20px, 4vw, 30px);
     padding: 0 clamp(0.5rem, 3vw, 1rem);
+    padding-top: clamp(5rem, 12vw, 7rem);
   }
 }
 

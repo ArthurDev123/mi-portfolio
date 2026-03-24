@@ -120,6 +120,10 @@ const { projects,lang = 'es' } = Astro.props;
     word-wrap: break-word;
   }
 
+  :global(html.light-mode) .card-info h3 {
+    color: white;
+  }
+
   .github-icon {
     position: absolute;
     top: 50%;

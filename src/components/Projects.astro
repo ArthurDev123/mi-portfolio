@@ -80,7 +80,7 @@ const { title, img, description, tecno = [], github, link, state } = Astro.props
   #info-project h3 {
     background-color: var(--accent);
     padding: clamp(0.8rem, 2vw, 20px);
-    color: var(--text-primary);
+    color: white;
     font-weight: bold;
     font-size: clamp(0.6rem, 1.5vw, 0.9rem);
     border-radius: 15px;
@@ -117,13 +117,17 @@ const { title, img, description, tecno = [], github, link, state } = Astro.props
     margin-top: clamp(0.5rem, 1vw, 1rem);
   }
 
+  :global(html.light-mode) #iconos img {
+    filter: brightness(0);
+  }
+
   #tecnologia h3 {
     background-color: var(--accent);
     padding: clamp(3px, 1vw, 6px);
     font-size: clamp(0.75rem, 1.5vw, 1rem);
     border-radius: 5px;
     margin: 0;
-    color: var(--text-primary);
+    color: white;
   }
 
   a {

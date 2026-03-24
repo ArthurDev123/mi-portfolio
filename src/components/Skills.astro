@@ -8,13 +8,20 @@ interface HardSkill {
   level: "Bajo" | "Medio" | "Alto";
 }
 
+interface ExtraSkill {
+  name: string;
+  percentage: number;
+  color?: string;
+}
+
 interface Props {
   softSkills: SoftSkill[];
   hardSkills: HardSkill[];
+  extraSkills?: ExtraSkill[];
   lang?: string;
 }
 
-const { softSkills, hardSkills,lang = 'es' } = Astro.props;
+const { softSkills, hardSkills, extraSkills = [], lang = 'es' } = Astro.props;
 
 const levelToPercentage = {
   "Bajo": 40,
@@ -44,7 +51,9 @@ const techIcons: Record<string, string> = {
   "Vue.js": "https://cdn.simpleicons.org/vuedotjs/4FC08D",
   "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss/06B6D4",
   "Next.js": "https://cdn.simpleicons.org/nextdotjs/FFFFFF",
-  "Express": "https://cdn.simpleicons.org/express/FFFFFF"
+  "Express": "https://cdn.simpleicons.org/express/FFFFFF",
+  "Angular": "https://cdn.simpleicons.org/angular/DD0031",
+  "SQL": "https://cdn.simpleicons.org/postgresql/336791"
 };
 
 
@@ -69,6 +78,55 @@ const getIconUrl = (name: string): string | undefined => {
         }
       </div>
     </div>
+
+    {extraSkills.length > 0 && (
+      <div class="skill-category">
+        <h3>Proporciones</h3>
+        <div class="pie-chart-container">
+          <div class="pie-chart-wrapper">
+            <svg viewBox="0 0 100 100" class="pie-chart-svg">
+              {(() => {
+                let cumulativePercent = 0;
+                return extraSkills.map((skill) => {
+                  const startAngle = (cumulativePercent / 100) * 2 * Math.PI;
+                  cumulativePercent += skill.percentage;
+                  const endAngle = (cumulativePercent / 100) * 2 * Math.PI;
+                  
+                  const x1 = 50 + 40 * Math.cos(startAngle - Math.PI / 2);
+                  const y1 = 50 + 40 * Math.sin(startAngle - Math.PI / 2);
+                  const x2 = 50 + 40 * Math.cos(endAngle - Math.PI / 2);
+                  const y2 = 50 + 40 * Math.sin(endAngle - Math.PI / 2);
+                  
+                  const largeArcFlag = skill.percentage > 50 ? 1 : 0;
+                  const pathData = `M 50 50 L ${x1} ${y1} A 40 40 0 ${largeArcFlag} 1 ${x2} ${y2} Z`;
+                  
+                  return (
+                    <path 
+                      class="pie-slice" 
+                      d={pathData}
+                      style={`fill: ${skill.color};`}
+                    />
+                  );
+                });
+              })()}
+              <circle cx="50" cy="50" r="25" class="pie-hole" />
+            </svg>
+            <div class="pie-center">
+              <span class="pie-label">100%</span>
+            </div>
+          </div>
+          <div class="pie-legend">
+            {extraSkills.map((skill) => (
+              <div class="legend-item">
+                <span class="legend-color" style={`background-color: ${skill.color};`}></span>
+                <span class="legend-name">{skill.name}</span>
+                <span class="legend-percent">{skill.percentage}%</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
 
     <div class="skill-category">
       <h3>Habilidades Técnicas</h3>
@@ -109,9 +167,10 @@ const getIconUrl = (name: string): string | undefined => {
 
   .skills-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: clamp(2rem, 4vw, 3rem);
     width: 100%;
+    align-items: start;
   }
 
   .skill-category h3 {
@@ -227,8 +286,104 @@ const getIconUrl = (name: string): string | undefined => {
     box-shadow: 0 0 10px rgba(120, 115, 245, 0.5);
   }
 
+  .pie-chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .pie-chart-wrapper {
+    position: relative;
+    width: clamp(180px, 30vw, 220px);
+    height: clamp(180px, 30vw, 220px);
+  }
+
+  .pie-chart-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 0 10px rgba(120, 115, 245, 0.3));
+  }
+
+  .pie-slice {
+    transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+    transform-origin: center;
+  }
+
+  .pie-slice:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px currentColor);
+    opacity: 0.9;
+  }
+
+  .pie-hole {
+    fill: var(--bg-primary);
+  }
+
+  .pie-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .pie-label {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: bold;
+    color: var(--text-primary);
+  }
+
+  .pie-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem 1.5rem;
+    width: 100%;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+  }
+
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .legend-name {
+    color: var(--text-primary);
+  }
+
+  .legend-percent {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
   /* Tablet */
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    .skills-container {
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1.5rem, 3vw, 2rem);
+    }
+  }
+
+  @media (max-width: 600px) {
     .skills-container {
       grid-template-columns: 1fr;
       gap: clamp(1.5rem, 3vw, 2rem);
